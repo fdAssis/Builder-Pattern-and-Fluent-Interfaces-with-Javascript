@@ -2,8 +2,12 @@
   "name": "design_patters_fluent_interface_and_builder",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "jest": "26"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
