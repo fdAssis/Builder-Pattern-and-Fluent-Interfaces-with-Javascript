@@ -8,8 +8,8 @@
     "jest": "26"
   },
   "scripts": {
-    "test": "npx jest --config jest.config.js",
-    "test:cov": "npx jest --config jest.config.js --coverage",
-    "test:watch": "npx jest --config jest.config.js --watchAll"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --config jest.config.js",
+    "test:cov": "NODE_OPTIONS=--experimental-vm-modules npx jest --config jest.config.js --coverage",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules npx jest --config jest.config.js --watchAll"
   }
 }
