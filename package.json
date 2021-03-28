@@ -8,6 +8,8 @@
     "jest": "26"
   },
   "scripts": {
-    "test": "jest"
+    "test": "npx jest --config jest.config.js",
+    "test:cov": "npx jest --config jest.config.js --coverage",
+    "test:watch": "npx jest --config jest.config.js --watchAll"
   }
 }
