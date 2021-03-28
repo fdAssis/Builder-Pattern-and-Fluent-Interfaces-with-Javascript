@@ -63,7 +63,42 @@ describe('Test Suit for FluentSQL Builder', () => {
     expect(result).toStrictEqual(expected);
   });
 
-  test.todo('#orderBy given a collection in should order results by field');
+  test('#orderBy given a collection in should order results by field', () => {
+    const result = FluentSQLBuild.for(data).orderBy('name').build();
 
-  test.todo('pipeline');
+    const expected = [
+      {
+        id: 0,
+        name: 'Francisco',
+        category: 'Developer',
+      },
+      {
+        id: 2,
+        name: 'Joao',
+        category: 'Manager',
+      },
+      {
+        id: 1,
+        name: 'Maria',
+        category: 'Developer',
+      },
+    ];
+
+    expect(result).toStrictEqual(expected);
+  });
+
+  test('pipeline', () => {
+    const result = FluentSQLBuild.for(data)
+      .where({ category: 'Developer' })
+      .where({ name: /^M/ })
+      .select(['name', 'category'])
+      .orderBy('name')
+      .build();
+
+    const expected = data
+      .filter(({ id }) => id === 1)
+      .map(({ name, category }) => ({ name, category }));
+
+    expect(result).toStrictEqual(expected);
+  });
 });

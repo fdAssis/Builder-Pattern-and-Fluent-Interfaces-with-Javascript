@@ -68,6 +68,14 @@ export default class FluentSQLBuilder {
     return currentItem;
   }
 
+  #performOrderBy(results) {
+    if (!this.#orberBy) return results;
+
+    return results.sort((prev, next) => {
+      return prev[this.#orberBy].localeCompare(next[this.#orberBy]);
+    });
+  }
+
   build() {
     const results = [];
 
@@ -81,6 +89,8 @@ export default class FluentSQLBuilder {
       if (this.#performLimit(results)) break;
     }
 
-    return results;
+    const finalResult = this.#performOrderBy(results);
+
+    return finalResult;
   }
 }
